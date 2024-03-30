@@ -14,7 +14,8 @@ const NoteState = (props) => {
   //   }, 1000);
   // };
   //same as {{state:state,update:update}} use es6 syntax
-  const host = "http://localhost:5000";
+  //const host = "http://localhost:5000";
+  const host = "https://inotebook-83xz.onrender.com";
   const notesInitial = [
     {
       tag: "personal",
