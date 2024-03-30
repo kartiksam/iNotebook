@@ -1,7 +1,13 @@
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 //use location to set the home and anout when click to show active or not
 function Navbar() {
+  const history = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    history("/login");
+  };
   let location = useLocation();
   useEffect(() => {
     console.log(location.pathname);
@@ -53,17 +59,21 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
+          {/* if token avialble means login or signup so not show these btn then show logout btn */}
+          {!localStorage.getItem("token") ? (
+            <form className="d-flex">
+              <Link className="btn btn-primary mx-2" to="/login" role="button">
+                Login
+              </Link>
+              <Link className="btn btn-primary mx-2" to="/signup" role="button">
+                Signup
+              </Link>
+            </form>
+          ) : (
+            <button onClick={handleLogout} className="btn btn-primary">
+              Logout
             </button>
-          </form>
+          )}
         </div>
       </div>
     </nav>
