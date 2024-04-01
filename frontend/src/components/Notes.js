@@ -161,18 +161,19 @@ const Notes = (props) => {
       <div className="row my-3">
         <h2> Your notes</h2>
         {/* if i will write direct {"some string "}n it will direwctly display on page = conditiopj to chk if there is no notes display it else map cart*/}
-        {notes.length === 0 && "No notes to display"}
+        {Array.isArray(notes) && notes.length === 0 && "No notes to display"}
         {/* same need to chk in newsapp  same in newsapp*/}
-        {notes.map((note) => {
-          return (
-            <Noteitem
-              key={note._id}
-              updateNote={updateNote}
-              showAlert={props.showAlert}
-              note={note}
-            />
-          );
-        })}
+        {Array.isArray(notes) &&
+          notes.map((note) => {
+            return (
+              <Noteitem
+                key={note._id}
+                updateNote={updateNote}
+                showAlert={props.showAlert}
+                note={note}
+              />
+            );
+          })}
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const Signup = (props) => {
   const history = useNavigate();
-  // const host = "http://localhost:5000";
+  // const host = "http://localhost:6000";
   const host = "https://inotebook-83xz.onrender.com";
   const [credentials, setCredentials] = useState({
     name: "",
